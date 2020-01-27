@@ -1,5 +1,6 @@
 import readline from 'readline';
 import os from 'os';
+import { TestState } from './types';
 
 function formatResults(testResults: number[][][]) {
   return testResults.map((result) => result.map((line) => line.join(' ')).join(os.EOL)).join(os.EOL + os.EOL);
@@ -18,17 +19,17 @@ export default function stdinInterface(processBitmap: (array: number[][]) => num
 
   console.log(`Please enter your test cases: ${os.EOL}`);
   readLineInstance.on('line', (line: string) => {
-    if (numberOfTests === 0) {
+    if (currentState === TestState.NumberOfTests) {
       numberOfTests = parseInt(line, 10);
       return;
     }
 
-    if (currentState === 1) {
+    if (currentState === TestState.BitmapSize) {
       currentState += 1;
       return;
     }
 
-    if (line && currentState === 2) {
+    if (line && currentState === TestState.BitmapLines) {
       currentTestLines.push(line.split(' ').map((bitmap) => parseInt(bitmap, 10)));
       return;
     }
