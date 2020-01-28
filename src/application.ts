@@ -1,4 +1,4 @@
 import processBitmap from './bitmap/process';
-import stdinInterface from './interface/stdin';
+import stdinPresentation from './presentation/stdin';
 
-stdinInterface(processBitmap);
+stdinPresentation(processBitmap);

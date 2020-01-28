@@ -6,7 +6,7 @@ function formatResults(testResults: number[][][]) {
   return testResults.map((result) => result.map((line) => line.join(' ')).join(os.EOL)).join(os.EOL + os.EOL);
 }
 
-export default function stdinInterface(processBitmap: (array: number[][]) => number[][]) {
+export default function stdinPresentation(processBitmap: (array: number[][]) => number[][]) {
   let numberOfTests = 0;
   let currentTest = 1;
   let currentState = 1;
